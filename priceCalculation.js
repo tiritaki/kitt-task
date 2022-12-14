@@ -30,7 +30,7 @@ function getPrice (totalmins)  {
     let time = {}
     if(week==0){
         time = {weeks : weeks, days : days, hours : hourss, minutes: mins }}
-    else {time = {weeks : weeks, days : days, daysWeek : days-(weeks*7), hours : hourss, minutes : mins}}
+    else {time = {weeks : weeks, days : days-(weeks*7), hours : hourss, minutes : mins}}
     return time
 
     //calculate price for weeks, days, hours, minute
@@ -62,4 +62,4 @@ console.log(getPrice(21250));
 console.log(getPrice(23650));
 console.log(getPrice(45650));
 console.log(getPrice(45950));
-console.log(getPrice(46080));
+console.log(getPrice(46081));
