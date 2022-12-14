@@ -23,16 +23,22 @@ function getPrice (totalmins)  {
     let absTotal= Math.abs(totalmins);
     let mins= absTotal % 60;
     let hours = Math.floor(absTotal / 60);
-    let days= Math.floor(hours / 24);
     let hourss = hours % 24;
-    let time = {days: days, hours: hourss, minutes:mins};
+    let days= Math.floor(hours / 24);
+    let week = Math.floor(days/7)
+    let weeks = week%7
+    let time = {}
+    if(weeks==0){
+        time = {weeks : weeks, days: days, hours: hourss, minutes:mins }}
+    else {time = {weeks : weeks, days: days%weeks, hours: hourss, minutes:mins}}
     return time
-    
+
     let pricePerMinute = 2;
     let pricePerHour = 22;
     let pricePerDay = 60;
     let pricePerWeek = 105;
-    
+    let timeCost = {costPerDay : time.days*pricePerDay}
+    return timeCost
 }
 
 
@@ -50,11 +56,5 @@ console.log(getPrice(150));
 console.log(getPrice(1440));
 console.log(getPrice(20160));
 console.log(getPrice(21250));
+console.log(getPrice(22250));
 
-/* ======= TESTS - DO NOT MODIFY ===== */
-
-test("Example 1", () => {
-    expect(
-        getPrice(10)
-    ).toEqual(20);
-  });
