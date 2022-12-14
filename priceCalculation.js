@@ -31,29 +31,34 @@ function getPrice (totalmins)  {
     if(week==0){
         time = {weeks : weeks, days : days, hours : hourss, minutes: mins }}
     else {time = {weeks : weeks, days : days-(weeks*7), hours : hourss, minutes : mins}}
-    return time
 
-    //calculate price for weeks, days, hours, minute
+    //calculate cost for weeks, days, hours, minute
     let pricePerMinute = 2;
     let pricePerHour = 22;
     let pricePerDay = 60;
     let pricePerWeek = 105;
+
+    let costTime = {costWeek: time.weeks*pricePerWeek, costDays : time.days*pricePerDay, 
+        costHours: time.hours*pricePerHour, costMinutes : time.minutes*pricePerMinute}
     
-    let cost = {}
-    // return cost = {costPerWeek : time.weeks*pricePerWeek, costPerDay : time.days*pricePerDay}
+    console.log(costTime)
+    if (costTime.costMinutes>22){
+        costTime.costHours = costTime.costHours + pricePerHour
+        costTime.costMinutes = 0
+    }
+    if (costTime.costHours>60){
+        costTime.costDays = time.days*pricePerDay + pricePerDay
+        costTime.costHours = 0
+    }
+    if (costTime.costDays>105){
+        costTime.costWeek = time.weeks*pricePerWeek + pricePerWeek
+        costTime.costDays = 0
+    }
+    return  costTime.costWeek+costTime.costDays+costTime.costHours+costTime.costMinutes
 
 }
-
-
-// if (formatTime(duration_minutes)[2]*pricePerMinute<pricePerHour)
-// {return formatTime(duration_minutes)[2]*pricePerMinute}
-
-// else if (formatTime(duration_minutes)[1]*pricePerHour<pricePerDay)
-// {return formatTime(duration_minutes)[1]*pricePerHour}
-
-
-
 console.log(getPrice(10));
+console.log(getPrice(11));
 console.log(getPrice(20));
 console.log(getPrice(150));
 console.log(getPrice(1440));
