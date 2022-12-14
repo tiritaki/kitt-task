@@ -19,7 +19,7 @@
 // email back the solution (with instructions how to run if necessary).
 
 function getPrice (totalmins)  {
-    //count weeks, days, hours, minutes
+    //count weeks, days, hours, minutes and put it in object
     let absTotal= Math.abs(totalmins);
     let mins= absTotal % 60;
     let hours = Math.floor(absTotal / 60);
@@ -28,22 +28,22 @@ function getPrice (totalmins)  {
     let week = Math.floor(days/7)
     let weeks = week%7
     let time = {}
+
     if(week==0){
         time = {weeks : weeks, days : days, hours : hourss, minutes: mins }}
     else {time = {weeks : weeks, days : days-(weeks*7), hours : hourss, minutes : mins}}
-    console.log(time)
 
-    //calculate cost for weeks, days, hours, minute
+    //initial price values for min, hour, day, week
     let pricePerMinute = 2;
     let pricePerHour = 22;
     let pricePerDay = 60;
     let pricePerWeek = 105;
 
+    //calculate cost for weeks, days, hours, minute
     let costTime = {costWeek: time.weeks*pricePerWeek, costDays : time.days*pricePerDay, 
         costHours: time.hours*pricePerHour, costMinutes : time.minutes*pricePerMinute}
     
-    console.log(costTime)
-
+    // check the cheapest rate for given duration
     if (costTime.costMinutes>pricePerHour){
         costTime.costHours = costTime.costHours + pricePerHour
         costTime.costMinutes = 0
@@ -65,6 +65,7 @@ function getPrice (totalmins)  {
         costTime.costHours = 0
         costTime.costMinutes = 0
     }
+    //return price as Integer
     return costTime.costWeek+costTime.costDays+costTime.costHours+costTime.costMinutes
 }
 
