@@ -28,10 +28,10 @@ function getPrice (totalmins)  {
     let week = Math.floor(days/7)
     let weeks = week%7
     let time = {}
-    if(weeks==0){
+    if(week==0){
         time = {weeks : weeks, days : days, hours : hourss, minutes: mins }}
-    else {time = {weeks : weeks, days : days%weeks, hours : hourss, minutes : mins}}
-    console.log(time)
+    else {time = {weeks : weeks, days : days, daysWeek : days-(weeks*7), hours : hourss, minutes : mins}}
+    return time
 
     //calculate price for weeks, days, hours, minute
     let pricePerMinute = 2;
@@ -39,6 +39,9 @@ function getPrice (totalmins)  {
     let pricePerDay = 60;
     let pricePerWeek = 105;
     
+    let cost = {}
+    // return cost = {costPerWeek : time.weeks*pricePerWeek, costPerDay : time.days*pricePerDay}
+
 }
 
 
@@ -56,5 +59,7 @@ console.log(getPrice(150));
 console.log(getPrice(1440));
 console.log(getPrice(20160));
 console.log(getPrice(21250));
-console.log(getPrice(22250));
-
+console.log(getPrice(23650));
+console.log(getPrice(45650));
+console.log(getPrice(45950));
+console.log(getPrice(46080));
