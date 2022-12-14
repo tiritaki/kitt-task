@@ -31,6 +31,7 @@ function getPrice (totalmins)  {
     if(week==0){
         time = {weeks : weeks, days : days, hours : hourss, minutes: mins }}
     else {time = {weeks : weeks, days : days-(weeks*7), hours : hourss, minutes : mins}}
+    console.log(time)
 
     //calculate cost for weeks, days, hours, minute
     let pricePerMinute = 2;
@@ -42,29 +43,38 @@ function getPrice (totalmins)  {
         costHours: time.hours*pricePerHour, costMinutes : time.minutes*pricePerMinute}
     
     console.log(costTime)
-    if (costTime.costMinutes>22){
+    if (costTime.costMinutes>pricePerHour){
         costTime.costHours = costTime.costHours + pricePerHour
         costTime.costMinutes = 0
     }
-    if (costTime.costHours>60){
+    if (costTime.costHours>pricePerDay){
         costTime.costDays = time.days*pricePerDay + pricePerDay
         costTime.costHours = 0
     }
-    if (costTime.costDays>105){
+    if (costTime.costDays>pricePerWeek ){
         costTime.costWeek = time.weeks*pricePerWeek + pricePerWeek
         costTime.costDays = 0
     }
-    return  costTime.costWeek+costTime.costDays+costTime.costHours+costTime.costMinutes
+
+    if (costTime.costDays+costTime.costHours+costTime.costMinutes>pricePerWeek){
+        costTime.costWeek = time.weeks*pricePerWeek + pricePerWeek
+        costTime.costDays = 0
+        costTime.costHours = 0
+        costTime.costMinutes = 0
+    }
+
+    return costTime.costWeek+costTime.costDays+costTime.costHours+costTime.costMinutes
+   
 
 }
-console.log(getPrice(10));
-console.log(getPrice(11));
-console.log(getPrice(20));
-console.log(getPrice(150));
-console.log(getPrice(1440));
-console.log(getPrice(20160));
-console.log(getPrice(21250));
-console.log(getPrice(23650));
-console.log(getPrice(45650));
-console.log(getPrice(45950));
-console.log(getPrice(46081));
+// console.log(getPrice(10));
+// console.log(getPrice(11));
+// console.log(getPrice(20));
+// console.log(getPrice(150));
+// console.log(getPrice(1440));
+// console.log(getPrice(20160));
+// console.log(getPrice(21250));
+// console.log(getPrice(23650));
+// console.log(getPrice(45650));
+console.log(getPrice(1560));
+console.log(getPrice(1561));
