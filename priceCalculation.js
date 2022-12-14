@@ -19,7 +19,7 @@
 // email back the solution (with instructions how to run if necessary).
 
 function getPrice (totalmins)  {
-    //count days, hours, minutes
+    //count weeks, days, hours, minutes
     let absTotal= Math.abs(totalmins);
     let mins= absTotal % 60;
     let hours = Math.floor(absTotal / 60);
@@ -29,16 +29,16 @@ function getPrice (totalmins)  {
     let weeks = week%7
     let time = {}
     if(weeks==0){
-        time = {weeks : weeks, days: days, hours: hourss, minutes:mins }}
-    else {time = {weeks : weeks, days: days%weeks, hours: hourss, minutes:mins}}
-    return time
+        time = {weeks : weeks, days : days, hours : hourss, minutes: mins }}
+    else {time = {weeks : weeks, days : days%weeks, hours : hourss, minutes : mins}}
+    console.log(time)
 
+    //calculate price for weeks, days, hours, minute
     let pricePerMinute = 2;
     let pricePerHour = 22;
     let pricePerDay = 60;
     let pricePerWeek = 105;
-    let timeCost = {costPerDay : time.days*pricePerDay}
-    return timeCost
+    
 }
 
 
