@@ -1,3 +1,11 @@
+# Running the code/tests
+
+The file is intended to be run as jest tests.
+
+Once you have cloned the repository, run npm install once in the terminal to install jest (and any necessary dependencies).
+To run the tests for all mandatory/extra exercises, run npm test
+
+
 # kitt-task
 
 The intended functionality of the service is to calculate the price of a
